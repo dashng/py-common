@@ -21,7 +21,8 @@ class DB_Util(object):
 def session_scope():
     try:
         db_util = DB_Util()
-        yield db_util.session()
+        session = db_util.session()
+        yield session
         session.commit()
     except:
         session.rollback()
